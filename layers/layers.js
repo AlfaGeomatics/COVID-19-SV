@@ -26,10 +26,11 @@ var lyr_Lim_Municipal_1 = new ol.layer.Vector({
                 interactive: true,
     title: 'Lim_Municipal<br />\
     <img src="styles/legend/Lim_Municipal_1_0.png" /> 0<br />\
-    <img src="styles/legend/Lim_Municipal_1_1.png" /> 1<br />\
-    <img src="styles/legend/Lim_Municipal_1_2.png" /> 2<br />\
-    <img src="styles/legend/Lim_Municipal_1_3.png" /> 3<br />\
-    <img src="styles/legend/Lim_Municipal_1_4.png" /> 4<br />'
+    <img src="styles/legend/Lim_Municipal_1_1.png" /> 1 - 2.4 <br />\
+    <img src="styles/legend/Lim_Municipal_1_2.png" /> 2.4 - 4.8 <br />\
+    <img src="styles/legend/Lim_Municipal_1_3.png" /> 4.8 - 7.2 <br />\
+    <img src="styles/legend/Lim_Municipal_1_4.png" /> 7.2 - 9.6 <br />\
+    <img src="styles/legend/Lim_Municipal_1_5.png" /> 9.6 - 12 <br />'
         });
 var format_Lim_Departamental_2 = new ol.format.GeoJSON();
 var features_Lim_Departamental_2 = format_Lim_Departamental_2.readFeatures(json_Lim_Departamental_2, 
