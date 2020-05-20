@@ -9,12 +9,14 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
-        #map {
-            width: 1629px;
-            height: 844px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
-        <title></title>
+        <title>CASOS COVID-19 LOCALES</title>
     </head>
     <body>
         <div id="map">
@@ -28,308 +30,182 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/Municipioscopiar_1.js"></script>
-        <script src="data/Departamentos_2.js"></script>
+        <script src="data/MUNICIPIOS_1.js"></script>
+        <script src="data/DEPARTAMENTOS_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[13.054414351061023,-90.27008994597175],[14.469833019615793,-87.4541522108723]]);
+        }).fitBounds([[12.84478159405103,-90.48245276750116],[14.619451425534274,-86.95637705476983]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_GoogleMapSatellite_0');
-        map.getPane('pane_GoogleMapSatellite_0').style.zIndex = 400;
-        var layer_GoogleMapSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleMapSatellite_0',
-            opacity: 0.5,
+        map.createPane('pane_Z_SubtleGreyscaleMap_0');
+        map.getPane('pane_Z_SubtleGreyscaleMap_0').style.zIndex = 400;
+        var layer_Z_SubtleGreyscaleMap_0 = L.tileLayer('https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i513227804!3m17!2ses-ES!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjJ8cC5oOiMwMDAwMDB8cC5zOi0xMDB8cC5sOi0xMDB8cC52Om9mZixzLnQ6MnxwLmg6IzAwMDAwMHxwLnM6LTEwMHxwLmw6LTEwMHxwLnY6b2ZmLHMudDoxfHAuaDojMDAwMDAwfHAubDotMTAwfHAudjpvZmYscy50OjN8cy5lOmx8cC5oOiNmZmZmZmZ8cC5zOi0xMDB8cC5sOjEwMHxwLnY6b2ZmLHMudDo2fHMuZTpsfHAuaDojMDAwMDAwfHAuczotMTAwfHAubDotMTAwfHAudjpvZmYscy50OjUxfHAuaDojZmZmZmZmfHAuczotMTAwfHAubDoxMDB8cC52Om9uLHMudDo2fHMuZTpnfHAuaDojZmZmZmZmfHAuczotMTAwfHAubDoxMDB8cC52Om9uLHMudDo0fHMuZTpsfHAuaDojMDAwMDAwfHAubDotMTAwfHAudjpvZmYscy50OjV8cy5lOmx8cC5oOiMwMDAwMDB8cC5zOi0xMDB8cC5sOi0xMDB8cC52Om9mZixzLnQ6M3xzLmU6Z3xwLmg6I2JiYmJiYnxwLnM6LTEwMHxwLmw6MjZ8cC52Om9uLHMudDo1fHMuZTpnfHAuaDojZGRkZGRkfHAuczotMTAwfHAubDotM3xwLnY6b24!4e0&key=AIzaSyAOqYYyBbtXQEtcHG7hwAwyCPQSYidG8yU', {
+            pane: 'pane_Z_SubtleGreyscaleMap_0',
+            opacity: 1.0,
             attribution: '',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
             maxNativeZoom: 18
         });
-        layer_GoogleMapSatellite_0;
-        map.addLayer(layer_GoogleMapSatellite_0);
-        function pop_Municipioscopiar_1(feature, layer) {
+        layer_Z_SubtleGreyscaleMap_0;
+        map.addLayer(layer_Z_SubtleGreyscaleMap_0);
+        function pop_MUNICIPIOS_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">fid</th>\
-                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">id</th>\
-                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">CODIGO</th>\
-                        <td>' + (feature.properties['CODIGO'] !== null ? autolinker.link(feature.properties['CODIGO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">NOMBRE</th>\
-                        <td>' + (feature.properties['NOMBRE'] !== null ? autolinker.link(feature.properties['NOMBRE'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">MUNICIPIO</th>\
+                        <td>' + (feature.properties['NAM'] !== null ? autolinker.link(feature.properties['NAM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">POBLACIÓN</th>\
-                        <td>' + (feature.properties['POBLACIÓN'] !== null ? autolinker.link(feature.properties['POBLACIÓN'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['PPL'] !== null ? autolinker.link(feature.properties['PPL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">AREA_KM</th>\
                         <td>' + (feature.properties['AREA_KM'] !== null ? autolinker.link(feature.properties['AREA_KM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">PERIMETRO</th>\
-                        <td>' + (feature.properties['PERIMETRO'] !== null ? autolinker.link(feature.properties['PERIMETRO'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">DENSIDAD</th>\
+                        <td>' + (feature.properties['DENSIDAD'] !== null ? autolinker.link(feature.properties['DENSIDAD'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['CASOS 22 ABRIL'] !== null ? autolinker.link(feature.properties['CASOS 22 ABRIL'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">COVID_19 COVID_19_MUNICIPIO</th>\
-                        <td>' + (feature.properties['COVID_19 COVID_19_MUNICIPIO'] !== null ? autolinker.link(feature.properties['COVID_19 COVID_19_MUNICIPIO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">COVID_19 COVID_19_CASOS LOCALES 29/04/2020</th>\
-                        <td>' + (feature.properties['COVID_19 COVID_19_CASOS LOCALES 29/04/2020'] !== null ? autolinker.link(feature.properties['COVID_19 COVID_19_CASOS LOCALES 29/04/2020'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">CASOS AL 20/05/2020</th>\
+                        <td>' + (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] !== null ? autolinker.link(feature.properties['COVID_19 COVID_19_CASOS LOCALES'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Municipioscopiar_1_0(feature) {
-            switch(String(feature.properties['COVID_19 COVID_19_CASOS LOCALES 29/04/2020'])) {
-                case '0':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
+        function style_MUNICIPIOS_1_0(feature) {
+            if (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] >= 0.000000 && feature.properties['COVID_19 COVID_19_CASOS LOCALES'] <= 0.990000 ) {
+                return {
+                pane: 'pane_MUNICIPIOS_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 2.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(43,131,186,1.0)',
+                fillColor: 'rgba(247,251,255,1.0)',
                 interactive: true,
             }
-                    break;
-                case '1':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
+            }
+            if (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] >= 0.990000 && feature.properties['COVID_19 COVID_19_CASOS LOCALES'] <= 5.000000 ) {
+                return {
+                pane: 'pane_MUNICIPIOS_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 2.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(82,159,179,1.0)',
+                fillColor: 'rgba(209,227,243,1.0)',
                 interactive: true,
             }
-                    break;
-                case '2':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
+            }
+            if (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] >= 5.000000 && feature.properties['COVID_19 COVID_19_CASOS LOCALES'] <= 15.000000 ) {
+                return {
+                pane: 'pane_MUNICIPIOS_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 2.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(122,187,173,1.0)',
+                fillColor: 'rgba(154,200,225,1.0)',
                 interactive: true,
             }
-                    break;
-                case '3':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
+            }
+            if (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] >= 15.000000 && feature.properties['COVID_19 COVID_19_CASOS LOCALES'] <= 31.000000 ) {
+                return {
+                pane: 'pane_MUNICIPIOS_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 2.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(161,214,166,1.0)',
+                fillColor: 'rgba(82,157,204,1.0)',
                 interactive: true,
             }
-                    break;
-                case '4':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
+            }
+            if (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] >= 31.000000 && feature.properties['COVID_19 COVID_19_CASOS LOCALES'] <= 142.000000 ) {
+                return {
+                pane: 'pane_MUNICIPIOS_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 2.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(191,229,170,1.0)',
+                fillColor: 'rgba(28,108,177,1.0)',
                 interactive: true,
             }
-                    break;
-                case '5':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
+            }
+            if (feature.properties['COVID_19 COVID_19_CASOS LOCALES'] >= 142.000000 && feature.properties['COVID_19 COVID_19_CASOS LOCALES'] <= 232.000000 ) {
+                return {
+                pane: 'pane_MUNICIPIOS_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 2.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(217,240,179,1.0)',
+                fillColor: 'rgba(8,48,107,1.0)',
                 interactive: true,
             }
-                    break;
-                case '6':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(243,250,187,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '7':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,243,177,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '8':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,218,148,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '9':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(254,193,119,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '10':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(251,163,92,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '14':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(239,117,70,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '19':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(227,71,49,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '42':
-                    return {
-                pane: 'pane_Municipioscopiar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(215,25,28,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_Municipioscopiar_1');
-        map.getPane('pane_Municipioscopiar_1').style.zIndex = 401;
-        map.getPane('pane_Municipioscopiar_1').style['mix-blend-mode'] = 'normal';
-        var layer_Municipioscopiar_1 = new L.geoJson(json_Municipioscopiar_1, {
+        map.createPane('pane_MUNICIPIOS_1');
+        map.getPane('pane_MUNICIPIOS_1').style.zIndex = 401;
+        map.getPane('pane_MUNICIPIOS_1').style['mix-blend-mode'] = 'normal';
+        var layer_MUNICIPIOS_1 = new L.geoJson(json_MUNICIPIOS_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Municipioscopiar_1',
-            layerName: 'layer_Municipioscopiar_1',
-            pane: 'pane_Municipioscopiar_1',
-            onEachFeature: pop_Municipioscopiar_1,
-            style: style_Municipioscopiar_1_0,
+            dataVar: 'json_MUNICIPIOS_1',
+            layerName: 'layer_MUNICIPIOS_1',
+            pane: 'pane_MUNICIPIOS_1',
+            onEachFeature: pop_MUNICIPIOS_1,
+            style: style_MUNICIPIOS_1_0,
         });
-        bounds_group.addLayer(layer_Municipioscopiar_1);
-        map.addLayer(layer_Municipioscopiar_1);
-        function pop_Departamentos_2(feature, layer) {
+        bounds_group.addLayer(layer_MUNICIPIOS_1);
+        map.addLayer(layer_MUNICIPIOS_1);
+        function pop_DEPARTAMENTOS_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FCODE'] !== null ? autolinker.link(feature.properties['FCODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UID'] !== null ? autolinker.link(feature.properties['UID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ASD'] !== null ? autolinker.link(feature.properties['ASD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COD'] !== null ? autolinker.link(feature.properties['COD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IC5'] !== null ? autolinker.link(feature.properties['IC5'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['NA2'] !== null ? autolinker.link(feature.properties['NA2'].toLocaleString()) : '') + '</td>\
@@ -341,6 +217,24 @@
                         <td colspan="2">' + (feature.properties['NAM'] !== null ? autolinker.link(feature.properties['NAM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['ACC'] !== null ? autolinker.link(feature.properties['ACC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CCN'] !== null ? autolinker.link(feature.properties['CCN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SDV'] !== null ? autolinker.link(feature.properties['SDV'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SDP'] !== null ? autolinker.link(feature.properties['SDP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SRT'] !== null ? autolinker.link(feature.properties['SRT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TXT'] !== null ? autolinker.link(feature.properties['TXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <td colspan="2">' + (feature.properties['AREA_KM'] !== null ? autolinker.link(feature.properties['AREA_KM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
@@ -350,56 +244,68 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Departamentos_2_0() {
+        function style_DEPARTAMENTOS_2_0() {
             return {
-                pane: 'pane_Departamentos_2',
+                pane: 'pane_DEPARTAMENTOS_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 3.0, 
-                fillOpacity: 0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,0.0)',
                 interactive: false,
             }
         }
-        map.createPane('pane_Departamentos_2');
-        map.getPane('pane_Departamentos_2').style.zIndex = 402;
-        map.getPane('pane_Departamentos_2').style['mix-blend-mode'] = 'normal';
-        var layer_Departamentos_2 = new L.geoJson(json_Departamentos_2, {
+        map.createPane('pane_DEPARTAMENTOS_2');
+        map.getPane('pane_DEPARTAMENTOS_2').style.zIndex = 402;
+        map.getPane('pane_DEPARTAMENTOS_2').style['mix-blend-mode'] = 'normal';
+        var layer_DEPARTAMENTOS_2 = new L.geoJson(json_DEPARTAMENTOS_2, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Departamentos_2',
-            layerName: 'layer_Departamentos_2',
-            pane: 'pane_Departamentos_2',
-            onEachFeature: pop_Departamentos_2,
-            style: style_Departamentos_2_0,
+            dataVar: 'json_DEPARTAMENTOS_2',
+            layerName: 'layer_DEPARTAMENTOS_2',
+            pane: 'pane_DEPARTAMENTOS_2',
+            onEachFeature: pop_DEPARTAMENTOS_2,
+            style: style_DEPARTAMENTOS_2_0,
         });
-        bounds_group.addLayer(layer_Departamentos_2);
-        map.addLayer(layer_Departamentos_2);
+        bounds_group.addLayer(layer_DEPARTAMENTOS_2);
+        map.addLayer(layer_DEPARTAMENTOS_2);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>CASOS COVID-19 LOCALES</h2>';
+            };
+            title.addTo(map);
         setBounds();
         var i = 0;
-        layer_Departamentos_2.eachLayer(function(layer) {
+        layer_DEPARTAMENTOS_2.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['NA2'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NA2']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Departamentos_2'});
+            layer.bindTooltip((layer.feature.properties['NA2'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'Montserrat\', sans-serif;">' + layer.feature.properties['NA2']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_DEPARTAMENTOS_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_Municipioscopiar_1,layer_Departamentos_2]);
+        resetLabels([layer_MUNICIPIOS_1,layer_DEPARTAMENTOS_2]);
         map.on("zoomend", function(){
-            resetLabels([layer_Municipioscopiar_1,layer_Departamentos_2]);
+            resetLabels([layer_MUNICIPIOS_1,layer_DEPARTAMENTOS_2]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Municipioscopiar_1,layer_Departamentos_2]);
+            resetLabels([layer_MUNICIPIOS_1,layer_DEPARTAMENTOS_2]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Municipioscopiar_1,layer_Departamentos_2]);
+            resetLabels([layer_MUNICIPIOS_1,layer_DEPARTAMENTOS_2]);
         });
         </script>
     </body>
